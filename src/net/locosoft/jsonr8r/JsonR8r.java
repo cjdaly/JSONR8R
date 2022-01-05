@@ -22,7 +22,7 @@ import java.nio.file.Path;
 import org.eclipse.json.provisonnal.com.eclipsesource.json.JsonValue;
 
 /**
- * Burn through JSON so fast, you'll need a REST!
+ * Burn through JSON so fast, you'll need to REST!
  * 
  * Use the methods <code>GET</code>, <code>PUT</code>, etc. to construct a
  * <code>Request</code> object to pass to the <code>Send</code> method. Use the
