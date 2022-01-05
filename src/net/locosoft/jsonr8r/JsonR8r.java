@@ -27,11 +27,11 @@ import org.eclipse.json.provisonnal.com.eclipsesource.json.JsonValue;
  * Use the methods <code>GET</code>, <code>PUT</code>, etc. to construct a
  * <code>Request</code> object to pass to the <code>Send</code> method. Use the
  * returned <code>Response</code> object to get HTTP status code and returned
- * content.
+ * content. Example:
  * 
  * <code>
- * 		JsonR8r jr = new JsonR8r();
-		Response rsp = jr.Send(jr.GET("/"));
+ *	</br>JsonR8r jr = new JsonR8r();
+ *	</br>Response rsp = jr.Send(jr.GET("/"));
  * </code>
  */
 public class JsonR8r {
