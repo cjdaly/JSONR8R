@@ -136,7 +136,7 @@ public class JsonR8r {
 				endpoint, //
 				new String[] { //
 						"accept", "application/json", //
-						"content-type", "text/plain" //
+						"content-type", "application/json" //
 				}, //
 				content, //
 				contentIsFilePath //
@@ -163,7 +163,7 @@ public class JsonR8r {
 				endpoint, //
 				new String[] { //
 						"accept", "application/json", //
-						"content-type", "text/plain" //
+						"content-type", "application/json" //
 				}, //
 				content, //
 				contentIsFilePath //
@@ -201,14 +201,6 @@ public class JsonR8r {
 
 		Request(String method, String endpoint, String[] headers) {
 			this(method, endpoint, headers, "", false);
-		}
-
-		Request(String method, String endpoint, String[] headers, String content) {
-			this(method, endpoint, headers, content, false);
-		}
-
-		Request(String method, String endpoint, String[] headers, JsonValue content) {
-			this(method, endpoint, headers, content.toString(), false);
 		}
 	}
 

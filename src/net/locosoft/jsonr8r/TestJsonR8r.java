@@ -37,6 +37,14 @@ class TestJsonR8r {
 	}
 
 	@Test
+	void GET_serverURL() throws IOException, InterruptedException {
+		JsonR8r j = new JsonR8r("http://localhost:5000");
+		Response rsp = j.Send(j.GET("/"));
+		assertEquals(200, rsp.status());
+		assertTrue(rsp.text().startsWith("Hello from REST_area server"));
+	}
+
+	@Test
 	void GET_PUT_DELETE_Text() throws IOException, InterruptedException {
 		JsonR8r j = new JsonR8r();
 		Response rsp;
