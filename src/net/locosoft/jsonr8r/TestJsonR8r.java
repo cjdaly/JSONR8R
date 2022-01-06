@@ -11,15 +11,20 @@
 package net.locosoft.jsonr8r;
 
 import static org.junit.Assert.assertTrue;
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
 
 import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 import org.eclipse.json.provisonnal.com.eclipsesource.json.JsonValue;
 import org.junit.jupiter.api.Test;
 
+import net.locosoft.jsonr8r.JsonR8r.Request;
 import net.locosoft.jsonr8r.JsonR8r.Response;
 
 /**
@@ -91,8 +96,10 @@ class TestJsonR8r {
 		// GET and confirm property now defined
 		rsp = j.Send(j.GET(prop));
 		assertEquals(200, rsp.status());
-		// TODO: check against file contents!
-		// assertEquals(, rsp.text());
+
+		// check response text against file contents
+		String fileText = Files.readString(Path.of(filepath));
+		assertEquals(fileText, rsp.text());
 
 		// check JSON parsing
 		JsonValue json = rsp.json();
@@ -151,8 +158,10 @@ class TestJsonR8r {
 		// GET the posted message by number
 		rsp = j.Send(j.GET("/msgs/" + msgNum));
 		assertEquals(200, rsp.status());
-		// TODO: check against file contents!
-		// assertEquals(, rsp.text());
+
+		// check response text against file contents
+		String fileText = Files.readString(Path.of(filepath));
+		assertEquals(fileText, rsp.text());
 
 		// check JSON parsing
 		JsonValue json = rsp.json();
@@ -160,4 +169,36 @@ class TestJsonR8r {
 		assertTrue(json.isObject());
 	}
 
+	@Test
+	void PUT_FileNotFound() throws IOException, InterruptedException {
+		JsonR8r j = new JsonR8r();
+		String prop = "/props/JSONR8R_test_FileNotFound";
+		String filepath = "NOT-testdata/menu.json";
+
+		boolean fileFound = true;
+		try {
+			// attempt to PUT (non-existent) file to /props
+			Request req = j.PUT(prop, filepath, true);
+			j.Send(req);
+		} catch (IOException ex) {
+			fileFound = false;
+		}
+		assertFalse(fileFound);
+	}
+
+	@Test
+	void POST_FileNotFound() throws IOException, InterruptedException {
+		JsonR8r j = new JsonR8r();
+		String filepath = "NOT-testdata/menu.json";
+
+		boolean fileFound = true;
+		try {
+			// attempt to POST (non-existent) file to /msgs
+			Request req = j.POST("/msgs", filepath, true);
+			j.Send(req);
+		} catch (IOException ex) {
+			fileFound = false;
+		}
+		assertFalse(fileFound);
+	}
 }
