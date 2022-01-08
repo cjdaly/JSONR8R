@@ -1,0 +1,7 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: JSONR8R
+Bundle-SymbolicName: net.jsonr8r
+Bundle-Version: 0.0.1.qualifier
+Automatic-Module-Name: net.jsonr8r
+Bundle-RequiredExecutionEnvironment: JavaSE-11

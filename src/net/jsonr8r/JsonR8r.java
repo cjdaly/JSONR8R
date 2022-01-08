@@ -8,7 +8,7 @@
 * SPDX-License-Identifier: EPL-2.0
 **********************************************************************/
 
-package net.locosoft.jsonr8r;
+package net.jsonr8r;
 
 import java.io.IOException;
 import java.net.URI;

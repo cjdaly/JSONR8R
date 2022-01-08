@@ -8,7 +8,7 @@
 * SPDX-License-Identifier: EPL-2.0
 **********************************************************************/
 
-package net.locosoft.jsonr8r;
+package net.jsonr8r;
 
 import static org.junit.Assert.assertTrue;
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -24,8 +24,8 @@ import java.util.regex.Pattern;
 import org.eclipse.json.provisonnal.com.eclipsesource.json.JsonValue;
 import org.junit.jupiter.api.Test;
 
-import net.locosoft.jsonr8r.JsonR8r.Request;
-import net.locosoft.jsonr8r.JsonR8r.Response;
+import net.jsonr8r.JsonR8r.Request;
+import net.jsonr8r.JsonR8r.Response;
 
 /**
  * Note! These tests run against the REST_area server
